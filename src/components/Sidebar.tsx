@@ -3,7 +3,6 @@
 import React, { useRef, useEffect } from 'react';
 import { 
   Layout, 
-  ChevronLeft,
   User,
   Bot,
   Sparkles,
@@ -45,7 +44,7 @@ export default function Sidebar({
   }, [messages, isGenerating]);
 
   return (
-    <aside className="w-[350px] bg-slate-900 text-slate-300 flex flex-col border-r border-slate-800 shadow-xl z-20 overflow-hidden relative shrink-0">
+    <aside className="w-[350px] h-full bg-slate-900 text-slate-300 flex flex-col border-r border-slate-800 shadow-xl z-20 overflow-hidden relative shrink-0">
       {/* Sidebar Header */}
       <div className="p-4 flex items-center justify-between border-b border-slate-800 shrink-0 bg-slate-900/50 backdrop-blur-md">
         <div className="flex items-center gap-2.5 font-bold text-white">
@@ -114,16 +113,24 @@ export default function Sidebar({
       </div>
 
       {/* Input Section */}
-      <div className="p-4 bg-slate-900/80 backdrop-blur-xl border-t border-slate-800">
-        <ChatInput 
-          prompt={prompt}
-          setPrompt={setPrompt}
-          handleGenerate={handleGenerate}
-          isGenerating={isGenerating}
-          compact
-        />
-        <p className="text-[10px] text-slate-500 text-center mt-3 font-medium uppercase tracking-widest opacity-50">
-          Agentic AI powered by OpenAI
+      <div className="p-4 bg-slate-900/50 backdrop-blur-2xl border-t border-slate-800/50 relative">
+        <div className="absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+        
+        <div className="relative group">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl blur opacity-0 group-focus-within:opacity-20 transition-opacity duration-500" />
+          <div className="relative bg-slate-950/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-2xl focus-within:border-blue-500/40 transition-all duration-300 ring-1 ring-white/5">
+            <ChatInput 
+              prompt={prompt}
+              setPrompt={setPrompt}
+              handleGenerate={handleGenerate}
+              isGenerating={isGenerating}
+              compact
+            />
+          </div>
+        </div>
+        
+        <p className="text-[10px] text-slate-500 text-center mt-3 font-bold uppercase tracking-[0.2em] opacity-30">
+          Powered by Sitepins
         </p>
       </div>
     </aside>
